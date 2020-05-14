@@ -24,21 +24,25 @@ treeMethods.contains = function(target) {
       pass child through contains
     return false if no matches
   */
-  if (this.value === target) { return true; }
+  var contains = false;
+
+  if (this.value === target) {
+    contains = true;
+  }
 
   var children = this.children;
 
   _.each(children, function(child) {
-    this.contains.call(child, target);
+    contains = contains || child.contains(target);
   });
 
-  return false;
+  return contains;
 };
 
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
- addChild -
- contains -
+ addChild - O(1)
+ contains - O(n)
  */
