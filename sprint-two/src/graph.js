@@ -57,6 +57,7 @@ Graph.prototype.forEachNode = function(cb) {
   for (var node in this.nodes) {
     cb(node);
   }
+
 };
 
 /*

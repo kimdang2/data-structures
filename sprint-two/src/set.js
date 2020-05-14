@@ -1,18 +1,28 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set._storage = null; // fix me
+  set._storage = {};
   return set;
 };
 
 var setPrototype = {};
 
 setPrototype.add = function(item) {
+  //check if item is already in storage
+  //  if it's in the set increment the value
+  //else add item to storage
+  if (this.contains(item)) {
+    this._storage[item] += 1;
+  } else {
+    this._storage[item] = 1;
+  }
 };
 
 setPrototype.contains = function(item) {
+  return this._storage.hasOwnProperty(item);
 };
 
 setPrototype.remove = function(item) {
+  delete this._storage[item];
 };
 
 /*
