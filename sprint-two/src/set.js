@@ -7,9 +7,6 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  //check if item is already in storage
-  //  if it's in the set increment the value
-  //else add item to storage
   if (this.contains(item)) {
     this._storage[item] += 1;
   } else {
@@ -27,4 +24,7 @@ setPrototype.remove = function(item) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+add -O(1)
+contains - O(1)
+remove - O(1)
  */

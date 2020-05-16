@@ -60,12 +60,27 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- addNode -
- contains -
- removeNode -
- addEdge -
- hasEdge -
- removeEdge -
+Because we knew the nodes we would be given in the spec were primitive
+we simplified our implementation so that we could perform these processes
+in constant time, however, normally this would not be the case as a node
+is not normally a primitive value.
+
+Since this is a two dimensional data structure we us V to represent the number of Vertexes (nodes) and E to represent the respective number of edges
+
+ addNode - O(1)
+ contains - O(1)
+ removeNode - O(e)
+ addEdge - O(1)
+ hasEdge - O(1)
+ removeEdge - O(1)
+ forEachNode - O(v)
+
+ If we implemented it to handle node objects we would expect this time complexity
+
+  addNode - O(1)
+ contains - O(v)
+ removeNode - O(ve)
+
  */
 
 

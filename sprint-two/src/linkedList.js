@@ -4,10 +4,6 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    //check if tail is empty
-    //  if empty set head and tail to node
-    //otherwise have current tails reference point to the new node
-    //set tail to node
     var node = Node(value);
     if (list.tail == null) {
       list.head = node;
@@ -19,19 +15,12 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    //store current head
-    //reassign head to next node
-    //return removed head
     var removedHead = list.head;
     list.head = list.head.next;
     return removedHead.value;
   };
 
   list.contains = function(target) {
-    //if list is empty return false
-    //traverse linked list
-    //  if current value is equal to target return true
-    //otherwise return false
     if (list.head === null && list.tail === null) {
       return false;
     }

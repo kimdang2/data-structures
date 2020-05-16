@@ -1,9 +1,7 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-
-  // your code here
-  newTree.children = [];// fix me
+  newTree.children = [];
   _.extend(newTree, treeMethods);
   return newTree;
 };
@@ -11,19 +9,11 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // invoke tree and assign the tree to value
-  // push the new tree to newTree.children
-
   var child = Tree(value);
   this.children.push(child);
 };
 
 treeMethods.contains = function(target) {
-  /* base case: compare this.value to target and return true if match
-     otherwise, traverse children
-      pass child through contains
-    return false if no matches
-  */
   var contains = false;
 
   if (this.value === target) {

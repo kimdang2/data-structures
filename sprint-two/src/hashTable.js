@@ -35,8 +35,6 @@ HashTable.prototype.insert = function(k, v) {
   this._storage.set(index, bucket);
 };
 
-
-
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
@@ -83,6 +81,10 @@ HashTable.prototype.resize = function(direction) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ insert -- best/average case O(1) / worst case O(n)
+ resize -- O(n)
+ retrieved -- O(1)
+ remove -- best/average case O(1) / worst case O(n)
  */
 
 

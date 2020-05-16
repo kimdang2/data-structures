@@ -1,5 +1,4 @@
 var BinarySearchTree = function(value) {
-  //init left and right pointers
   var bst = Object.create(bstMethods);
 
   bst.value = value;
@@ -13,10 +12,6 @@ var bstMethods = {};
 
 //TO DO: insert
 bstMethods.insert = function(value) {
-  /*check top of the tree and check if its higher or lower
-      if value > root, explore right subtree
-      otherwise, explore left subtree
-  */
   var root = this;
 
   while (root !== null) {
@@ -64,6 +59,9 @@ bstMethods.depthFirstLog = function (cb) {
 
 
 
-// /*
-//  * Complexity: What is the time complexity of the above functions?
-//  */
+/*
+* Complexity: What is the time complexity of the above functions?
+insert - O(log(n))
+contains - O(log(n))
+depthFirstLog - O(n)
+*/
