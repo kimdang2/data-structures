@@ -4,33 +4,55 @@ var HashTable = function() {
   this._size = 0;
 };
 
+HashTable.prototype.findTupleIndex = function(bucket, key) {
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === key) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  //check if items in storage is less than 75% of limit
-  //  if not, double storage
-  //  rehash all items
-  //if index isn't in storage
-  //  add to bucket
-  //  increment pointer
-  //else check if the key already exists in bucket
-  //  if so update value in that tuple
-  //else add key value pair to bucket
-  //  increment pointer
-  if (this._size > Math.floor(.75 * this._limit)) {
-    this._storage = this._storage * 2;
-    LimitedArray.each(getIndexBelowMaxForKey(k, this._limit));
+  var bucket = this._storage.get(index) || [];
+  if (bucket.length === 0) {
+    bucket.push([ k, v ]);
+    this._size += 1;
+  } else {
+    var tupleIndex = this.findTupleIndex(bucket, k);
+    if (tupleIndex === -1) {
+      bucket.push([ k, v ]);
+      this._size += 1;
+    } else {
+      bucket[tupleIndex][1] = v;
+    }
   }
-
+  this._storage.set(index, bucket);
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  var bucket = this._storage.get(index);
+  if (bucket) {
+    var tupleIndex = this.findTupleIndex(bucket, k);
+    if (tupleIndex > -1) {
+      return bucket[tupleIndex][1];
+    }
+  }
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  var bucket = this._storage.get(index);
+  if (bucket) {
+    var tupleIndex = this.findTupleIndex(bucket, k);
+    if (tupleIndex > -1) {
+      bucket.splice(tupleIndex, 1);
+    }
+  }
+  this._storage.set(index, bucket);
 };
-
 
 
 /*
