@@ -33,6 +33,7 @@ var LinkedList = function() {
     }
     return false;
   };
+
   return list;
 };
 

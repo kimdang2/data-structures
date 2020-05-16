@@ -10,7 +10,6 @@ var BinarySearchTree = function(value) {
 
 var bstMethods = {};
 
-//TO DO: insert
 bstMethods.insert = function(value) {
   var root = this;
 
@@ -31,8 +30,6 @@ bstMethods.insert = function(value) {
   }
 };
 
-
-//TO DO: contains
 bstMethods.contains = function (value) {
   var contains = false;
   if (this.value === value) { return true; }
@@ -49,15 +46,11 @@ bstMethods.contains = function (value) {
   return contains;
 };
 
-
-// //TO DO: depth first log
 bstMethods.depthFirstLog = function (cb) {
   cb(this.value);
   if (this.left) { this.left.depthFirstLog(cb); }
   if (this.right) { this.right.depthFirstLog(cb); }
 };
-
-
 
 /*
 * Complexity: What is the time complexity of the above functions?
