@@ -17,13 +17,13 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  if (this.contains(node)) {
-    var vertexes = this.edges[node];
-    for (var vertex in vertexes) {
-      delete this.edges[vertex][node];
-    }
-    delete this.nodes[node];
+  if (!this.contains(node)) { throw new ReferenceError('Cannot remove a nonexistent node'); }
+
+  var vertexes = this.edges[node];
+  for (var vertex in vertexes) {
+    delete this.edges[vertex][node];
   }
+  delete this.nodes[node];
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -55,7 +55,6 @@ Graph.prototype.forEachNode = function(cb) {
   for (var node in this.nodes) {
     cb(node);
   }
-
 };
 
 /*
