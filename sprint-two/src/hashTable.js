@@ -24,10 +24,7 @@ HashTable.prototype.insert = function(k, v) {
     bucket.push([ k, v ]);
     this._count += 1;
   } else {
-    //var tupleIndex = this.findTupleIndex(bucket, k);
-    var tupleIndex = bucket.findIndex(function(tuple) {
-      return tuple[0] === k;
-    });
+    var tupleIndex = this.findTupleIndex(bucket, k);
     if (tupleIndex === -1) {
       bucket.push([ k, v ]);
       this._count += 1;
@@ -59,9 +56,7 @@ HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
   if (bucket) {
-    var tupleIndex = bucket.findIndex(function(tuple) {
-      return tuple[0] === k;
-    });
+    var tupleIndex = this.findTupleIndex(bucket, k);
     if (tupleIndex > -1) {
       bucket.splice(tupleIndex, 1);
       this._count -= 1;
