@@ -14,7 +14,7 @@ HashTable.prototype.findTupleIndex = function(bucket, key) {
 };
 
 HashTable.prototype.insert = function(k, v) {
-  if (this._count + 1 > 0.75 * this._limit) {
+  if (this._count >= 0.75 * this._limit) {
     this.resize(1);
   }
 
@@ -49,7 +49,7 @@ HashTable.prototype.retrieve = function(k) {
 };
 
 HashTable.prototype.remove = function(k) {
-  if (this._limit > 8 && this._count - 1 < 0.25 * this._limit ) {
+  if (this._limit > 8 && this._count <= 0.25 * this._limit ) {
     this.resize(-1);
   }
 
